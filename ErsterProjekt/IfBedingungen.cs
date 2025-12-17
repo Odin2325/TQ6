@@ -1,9 +1,9 @@
-﻿namespace ErsterProjekt
-{
-    internal class IfBedingungen
-    {
-        static void Main()
-        {
+﻿//namespace ErsterProjekt
+//{
+//    internal class IfBedingungen
+//    {
+//        static void Main()
+//        {
 
             //Übungen mit if/else if/else:
             //else if 0 - unendlich mal
@@ -128,31 +128,31 @@
             //Ausgabe: Benutzername oder Passwort falsch.
 
 
-            string name = "max_mustermann";
-            string passwort = "1234";
+//            string name = "max_mustermann";
+//            string passwort = "1234";
 
 
-            Console.Write("Bitte den Benutzername eingeben: ");
-            string eingabeName = Console.ReadLine();
+//            Console.Write("Bitte den Benutzername eingeben: ");
+//            string eingabeName = Console.ReadLine();
 
-            Console.Write("Bitte das Passwort eingeben: ");
-            string eingabePasswort = Console.ReadLine();
+//            Console.Write("Bitte das Passwort eingeben: ");
+//            string eingabePasswort = Console.ReadLine();
 
-            if (eingabeName == name && eingabePasswort == passwort)
-            {
-                Console.WriteLine("Anmeldung war erfolgreich!");
-            }
-            else
-            {
-                Console.WriteLine("Benutzername oder Passwort falsch.");
-            }
-
-
-
+//            if (eingabeName == name && eingabePasswort == passwort)
+//            {
+//                Console.WriteLine("Anmeldung war erfolgreich!");
+//            }
+//            else
+//            {
+//                Console.WriteLine("Benutzername oder Passwort falsch.");
+//            }
 
 
 
-        }
 
-    }
-}
+
+
+//        }
+
+//    }
+//}
