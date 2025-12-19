@@ -1,9 +1,17 @@
-﻿namespace MicrosoftLearn
-{
-    internal class MicrosoftLearn
-    {
-        static void Main(string[] args)
-        {
+﻿//using System.Drawing;
+//using System.Linq.Expressions;
+//using System.Reflection.Emit;
+//using System.Runtime.ConstrainedExecution;
+//using System.Text.RegularExpressions;
+//using static System.Net.Mime.MediaTypeNames;
+//using static System.Runtime.InteropServices.JavaScript.JSType;
+
+//namespace MicrosoftLearn
+//{
+//    internal class MicrosoftLearn
+//    {
+//        static void Main(string[] args)
+//        {
             // Übung 1: Erste Schritte
 
             //Console.WriteLine("Hello World!");
@@ -405,41 +413,41 @@
 
 
 
-//            string permission = "Admin|Manager";
-//            int level = 55;
-//            Ihre Anwendung verwendet eine Kombination aus permission und level, um die Geschäftsregeln in diesem Herausforderungsszenario anzuwenden und auszuwerten.Die vollständige Liste der Bedingungen für Geschäftsregeln wird im nächsten Schritt angegeben. Ihre fertige Lösung muss permission und level verwenden.
+            //            string permission = "Admin|Manager";
+            //            int level = 55;
+            //            Ihre Anwendung verwendet eine Kombination aus permission und level, um die Geschäftsregeln in diesem Herausforderungsszenario anzuwenden und auszuwerten.Die vollständige Liste der Bedingungen für Geschäftsregeln wird im nächsten Schritt angegeben. Ihre fertige Lösung muss permission und level verwenden.
 
-// Tipp
+            // Tipp
 
-//Um alle Kombinationen von permission und level, die in den folgenden Geschäftsregeln beschrieben sind, ausreichend zu testen, müssen Sie diesen Variablen zusätzliche Werte zuweisen und die Anwendung mehrmals ausführen.
+            //Um alle Kombinationen von permission und level, die in den folgenden Geschäftsregeln beschrieben sind, ausreichend zu testen, müssen Sie diesen Variablen zusätzliche Werte zuweisen und die Anwendung mehrmals ausführen.
 
-//Implementieren von Geschäftsregeln
-// Wichtig
+            //Implementieren von Geschäftsregeln
+            // Wichtig
 
-//Sie müssen die Contains() Hilfsmethode verwenden, um zu bestimmen, ob der der Zeichenfolge zugewiesene permission Wert einen der Berechtigungswerte enthält, die durch die "Geschäftsregeln" angegeben sind. Beispielsweise gibt der Ausdruck permission.Contains("Admin") das Ergebnis true zurück, wenn die anfänglichen Datenwerte verwendet werden, die im obigen Code angegeben sind.
+            //Sie müssen die Contains() Hilfsmethode verwenden, um zu bestimmen, ob der der Zeichenfolge zugewiesene permission Wert einen der Berechtigungswerte enthält, die durch die "Geschäftsregeln" angegeben sind. Beispielsweise gibt der Ausdruck permission.Contains("Admin") das Ergebnis true zurück, wenn die anfänglichen Datenwerte verwendet werden, die im obigen Code angegeben sind.
 
-//Hier finden Sie die Geschäftsregeln, die Ihre Lösung erfüllen muss:
+            //Hier finden Sie die Geschäftsregeln, die Ihre Lösung erfüllen muss:
 
-//            Wenn der Benutzer ein Administrator mit einer höheren Ebene als 55 ist, geben Sie die folgende Meldung aus:
+            //            Wenn der Benutzer ein Administrator mit einer höheren Ebene als 55 ist, geben Sie die folgende Meldung aus:
 
-//Output
-//Welcome, Super Admin user.
-//Wenn der Benutzer ein Administrator mit einer Ebene von 55 oder darunter ist, geben Sie die folgende Meldung aus:
+            //Output
+            //Welcome, Super Admin user.
+            //Wenn der Benutzer ein Administrator mit einer Ebene von 55 oder darunter ist, geben Sie die folgende Meldung aus:
 
-//Output
-//Welcome, Admin user.
-//Wenn der Benutzer ein Manager mit einer Ebene von 20 oder höher ist, geben Sie die folgende Meldung aus:
+            //Output
+            //Welcome, Admin user.
+            //Wenn der Benutzer ein Manager mit einer Ebene von 20 oder höher ist, geben Sie die folgende Meldung aus:
 
-//Output
-//Contact an Admin for access.
-//Wenn der Benutzer ein Manager mit einer niedrigeren Ebene als 20 ist, geben Sie die folgende Meldung aus:
+            //Output
+            //Contact an Admin for access.
+            //Wenn der Benutzer ein Manager mit einer niedrigeren Ebene als 20 ist, geben Sie die folgende Meldung aus:
 
-//Output
-//You do not have sufficient privileges.
-//Wenn der Benutzer kein Administrator oder Vorgesetzter ist, geben Sie die Nachricht aus:
+            //Output
+            //You do not have sufficient privileges.
+            //Wenn der Benutzer kein Administrator oder Vorgesetzter ist, geben Sie die Nachricht aus:
 
-//Output
-//You do not have sufficient privileges.
+            //Output
+            //You do not have sufficient privileges.
 
 
             //    Console.Write("Geben Sie Ihre Berechtigung ein (z.B. Admin|Manager): ");
@@ -457,13 +465,16 @@
 
 
 
+            
 
 
 
 
-        }
-    }
 
-}
+
+//        }
+//    }
+
+//}
     
 
