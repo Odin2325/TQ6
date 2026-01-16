@@ -65,7 +65,7 @@ namespace Heizungssystem
 
             // Heizung benutzen
             heizung.anschalten();
-            heizung.Hauserwaermen(25);
+            heizung.Hauserwaermen(20);
             heizung.ausschalten();
 
             Console.ReadLine();
