@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ErsterProjekt
 {
-    internal class BankKonto
+    internal class Auto
     {
     }
 }
