@@ -48,7 +48,7 @@ namespace ErsterProjekt
         }
          
         //methode rollen
-        public void rollen()
+        public void Rollen()
         {
             Console.WriteLine($"der hund mit besitzer{besitzer} rollt sehr schnell");
         }
