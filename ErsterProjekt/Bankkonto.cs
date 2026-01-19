@@ -60,7 +60,7 @@ namespace ErsterProjekt
 
             //Pin ueberpruefen methode: Console.WriteLine(pin);
 
-            Console.WriteLine(bic);
+            /*Console.WriteLine(bic);*/
 
             //Anforderungen fuer BIC:
 
