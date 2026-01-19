@@ -5,14 +5,11 @@
         static void Main()
         {
 
-            Auto meinAuto = new Auto("Rot", "Polo", "VW", 120, 200);
-            Auto sabasAuto = new Auto("Schwarz","Touran","VW",200,120);
-            Auto ronsAuto = new Auto("NeonKnallPinkSuperVersion","Bully","VW",180,160);
-            Console.ForegroundColor = ConsoleColor.Magenta;
-            ronsAuto.Fahren(300);
-
-            ronsAuto.maxGeschwindigkeit = 200;
-
+            Bankkonto nicoKonto = new Bankkonto("Nicolas Arevalo Hoelscher");
+            Bankkonto sabaKonto = new Bankkonto("Saba Farhan", filiale: "Konstanz");
+            Bankkonto vacheKonto = new Bankkonto("Vache Aghajanyan", filiale: "Hamburg");
+            Bankkonto hannesKonto = new Bankkonto("Hannes Meyer", filiale: "Berlin");
+            Bankkonto saschaKonto = new Bankkonto("Sascha Schilling");
         }
     }
 }
