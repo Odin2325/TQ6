@@ -19,7 +19,7 @@
 
 
 
-            Bankkonto b = new Bankkonto("Saba", "SuperBank", "Muenchen");
+            Bankkonto b = new Bankkonto("Saba");
            
 
         }
