@@ -25,12 +25,15 @@ namespace ErsterProjekt
         public void Hauserwaermen(int gewuenschteTemp) { 
             if (AnAusSchaltStatus == "aus") 
             { Console.WriteLine("Heizung ist aus. Bitte zuerst anschalten.");
-                return; } 
+                return; 
+            } 
             if (gewuenschteTemp > MaxTemperatur)
             { Console.WriteLine($"Gewünschte Temperatur überschreitet MaxTemperatur von {MaxTemperatur}°C.");
                 return; 
             } 
-            for (int i = AktuelleTemperatur; i < gewuenschteTemp; i++) { AktuelleTemperatur = i; 
+            for (int i = AktuelleTemperatur; i < gewuenschteTemp; i++)
+            { 
+                AktuelleTemperatur = i; 
                 Console.WriteLine($"Unser Haus wird wärmer. Aktuelle Temperatur: {AktuelleTemperatur}°C");
             }
             Console.WriteLine($"Zieltemperatur {gewuenschteTemp}°C erreicht.");
