@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 
 namespace ErsterProjekt
@@ -13,6 +14,9 @@ namespace ErsterProjekt
             Console.WriteLine("\nHier findest du alle Programme die wir entwickelt haben.");
             Console.WriteLine("\nWähle ein Programm aus:");
             Console.WriteLine("\n1.Taschenrechner");
+            Console.WriteLine("\n2.Passwort-Stärke-Prüfer");
+            Console.WriteLine("\n3.Text Statistik");
+            Console.WriteLine("\n4.Zahlen-Werkzeuge");
             Console.WriteLine("\nAuswahl:");
 
             int wahl;
@@ -30,6 +34,15 @@ namespace ErsterProjekt
             {
                 case 1:
                     Rechnermenue();
+                    break;
+                case 2:
+                    Passwortprüfer.Passwortpruefer();
+                    break;
+                case 3:
+                    Textstatistik.Textstat();
+                    break;
+                case 4:
+                    Zahlen_Werkzeug.ZahlenWerk();
                     break;
 
                 default:
@@ -82,6 +95,7 @@ namespace ErsterProjekt
                     Console.WriteLine("Coming Soon");
                     break;
             }
+
         }
     }
 }
