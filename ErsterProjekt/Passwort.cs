@@ -1,4 +1,4 @@
-﻿using System;
+﻿/*using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -6,7 +6,7 @@ namespace ErsterProjekt
 {
     internal class PasswortPrüfer
     {
-    /*    public static bool HasMinLength(string text, int minLength = 8)
+    *//*    public static bool HasMinLength(string text, int minLength = 8)
 
         {
             return text != null && text.Length >= minLength;//TODO
@@ -30,7 +30,7 @@ namespace ErsterProjekt
         public static void PrintStrengthReport(string password)
         {
             //TODO
-        }*/
+        }*//*
 
 
         internal class Program
@@ -132,5 +132,5 @@ namespace ErsterProjekt
 
 
 
-}
+}*/
 
