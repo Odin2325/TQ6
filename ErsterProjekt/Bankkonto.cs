@@ -52,6 +52,11 @@ internal class Bankkonto
     {
         return kontoinhaber;
     }
+    public string GetPin()
+    {
+        return pin;
+    }
+
 
     //bool Einzahlen(decimal betrag, string pin)
     public bool Einzahlen(decimal betrag, string quelle = "==========")
