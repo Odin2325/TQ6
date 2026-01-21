@@ -46,11 +46,9 @@ namespace ErsterProjekt
                     Zahlen_Werkzeug.ZahlenWerk();
                     break;
                 case 5:
-                    Bankkonto VacheBankkonto = new Bankkonto("Vache", "Parkbank", "Wegberg");
-                    Bankkonto SabaBankkonto = new Bankkonto("Saba", "Parkbank", "Wegberg");
-                    Bankkonto SaschaBankkonto = new Bankkonto("Sascha", "Parkbank", "Wegberg");
-                    Bankkonto NicoBankkonto = new Bankkonto("Nico", "Parkbank", "Wegberg");
                     Bankkonto HannesBankkonto = new Bankkonto("Hannes", "Parkbank", "Wegberg");
+                    HannesBankkonto.Kontodetails();
+                    //Bankmenue();
                     break;
 
                 default:
@@ -105,5 +103,31 @@ namespace ErsterProjekt
             }
 
         }
+        public static void Bankmenue()
+        {
+            int wahl;
+            Console.WriteLine("Waehle aus was du tun willst:");
+            Console.WriteLine("\n1.Einzahlen");
+            Console.WriteLine("\n2.Auszahlen");
+            Console.WriteLine("\n3.Kontoauszüge");
+            try
+            {
+                wahl = Convert.ToInt32(Console.ReadLine());
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ungültige Eingabe:" + ex.Message);
+                return;
+            }
+            switch (wahl) 
+            {
+                case 1:
+                    Console.WriteLine("Bitte geben sie ihren Pin ein");
+                    string pin = Console.ReadLine();
+                    Bankkonto HannesBankkonto = new Bankkonto("Hannes", "Parkbank", "Wegberg");
+                    //HannesBankkonto.Einzahlen(pin);
+                    break;
+
+            }
     }
 }

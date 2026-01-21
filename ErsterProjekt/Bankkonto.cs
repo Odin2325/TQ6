@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using System.Text;
 
 namespace ErsterProjekt
@@ -27,44 +28,145 @@ namespace ErsterProjekt
         // PSTB             DE          MU            MU2
         //Bank code - ländercode - standort stadt - filiale
         private string pin;
+        private List<string> verlauf;
+       
         private static int zaehler = 0;
 
         //Konstruktor
-        public Bankkonto(string kontoinhaber, string bank, string filiale)
+        public Bankkonto(string kontoinhaber, string bank="Parkbank", string filiale="Wegberg")
         {
             this.kontoinhaber = kontoinhaber;
             this.bank = bank;
             this.filiale = filiale;
             kontostand = 0;
             pin = PinErstellen();
+            Console.WriteLine(pin);
             bic = BicErstellen();
             kontonummer = KontonummerErstellen();
             zaehler++;
             iban = IBANErstellen();
-            Console.WriteLine($"Iban von {kontoinhaber} ist: " + iban);
-            //iban
-            //kontonummer
-            //bic
-            //Anforderungen für BIC:
-            //BIC soll zufällig 4 zeichen erstellen und abspeicher, dann DE abspeicher,
-            //dann 2 zufällige Buchstaben, dann erste 2 Buchstaben von filiale und eine zufällige zwahl zwischen 0 und 9
-            //pin
+            verlauf = new List<string>() { "OP\tBetrag\tQuelle\t\tZiel" };
+            //Console.WriteLine($"Iban von {kontoinhaber} ist: " + iban);
+            //Verlauf format:
+            /* OP  Betrag Konto         Ziel
+             * +    230   kontonummer   kontonummer
+             * -    100   kontonummer   kontonummer
+             */
         }
-        private string KontonummerErstellen()
+
+        public string GetKontonummer()
         {
-            string kontonummer = "";
-            int zaehlerLaenge = (""+zaehler).Length;
-
-            for (int i = 0; i < 10; i++)
-            {
-                //341
-                kontonummer += 0;
-            }
-            kontonummer += zaehler;
-
-
             return kontonummer;
         }
+        public string GetIBAN()
+        {
+            return iban; 
+        }
+        //bool Einzahlen(decimal betrag, string pin)
+        public bool Einzahlen(decimal betrag, string pin)
+        {
+            if (betrag <= 0)
+            {
+                Console.WriteLine("Ungültiger Betrag. Bitte nur Zahlen größer als 0 eingeben");
+                return false;
+            }
+            if(this.pin==pin)
+            {
+                kontostand += betrag;
+                verlauf.Add($"+\t{betrag}\t==========\t{iban}");
+                return true;
+            }
+            else
+            {
+                Console.WriteLine("Ungültiger Pin.");
+                return false;
+            }
+        }
+        //bool Auszahlen(decimal betrag, string pin)
+        public bool Auszahlen(decimal betrag, string pin)
+        {
+            if (betrag <= 0)
+            {
+                Console.WriteLine("Ungültiger Betrag. Bitte nur Zahlen größer als 0 eingeben");
+                return false;
+            }
+            if (this.pin == pin)
+            {
+                kontostand -= betrag;
+                if (kontostand < 0)
+                {
+                    Console.WriteLine("Zu wenig geld zum abholen");
+                    kontostand += betrag;
+                    return false;
+                }
+                verlauf.Add($"-\t{betrag}\t==========\t{iban}");
+                return true;
+            }
+            else
+            {
+                Console.WriteLine("Ungültiger Pin.");
+                return false;
+            }
+        }
+        //void KontostandAnzeigen(string pin)
+        public void Kontostand(string pin)
+        {
+            if (this.pin == pin)
+            {
+                Console.WriteLine("Dein Kontostand beträgt: " + kontostand + " EUR");
+            }
+            else
+            {
+                Console.WriteLine("Ungültige Eingabe");
+            }
+            return;
+
+        }
+
+        //void Kontoauszug(string pin)
+        public void Kontoauszug(string pin)
+        {
+            if (this.pin == pin)
+            {
+                foreach (string eintrag in verlauf)
+                {
+                    Console.WriteLine(eintrag);
+                }
+            }
+            else
+            {
+                Console.WriteLine("Ungültiger Pin");
+            }
+        }
+        public void Kontodetails()
+        {
+            
+             Console.WriteLine("============= Kontodetails =============");
+             Console.WriteLine("\nKontoinhaber: \t" + kontoinhaber);
+             Console.WriteLine("\nKontonummer: \t" + kontonummer);
+             Console.WriteLine("\nIBAN: \t\t" + iban);
+             Console.WriteLine("\nBank: \t\t" + bank); 
+             Console.WriteLine("\nBIC: \t\t" + bic);
+             Console.WriteLine("\nPin: \t\t" + pin);
+             Console.WriteLine("========================================");
+            
+            return;
+        }
+                private string KontonummerErstellen()
+                {
+                    string kontonummer = "";
+                    int zaehlerLaenge = ("" + zaehler).Length;
+
+                    for (int i = 0; i < 10; i++)
+                    {
+                        //341
+                        kontonummer += 0;
+                    }
+                    kontonummer += zaehler;
+
+
+                    return kontonummer;
+                }
         private string PinErstellen()
         {
             Random random = new Random();
@@ -117,6 +219,11 @@ namespace ErsterProjekt
         }
 
         //Methode
+
+
+
+        //bool Überweisen(string iban, string pin, decimal betrag)
+        //void Kontodetails(string pin)
 
 
 
