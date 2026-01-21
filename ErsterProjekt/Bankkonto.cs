@@ -1,6 +1,9 @@
 ﻿
 using System.ComponentModel.Design;
 
+
+
+
 internal class Bankkonto
 {
     //Attribute
@@ -30,95 +33,92 @@ internal class Bankkonto
         kontonummer = KontonummerErstellen();
         iban = IBANErstellen();
         verlauf = new List<string>() { "OP\tBetrag\tQuelle\t\tZiel" };
-        //Verlauf format:
-        /* OP   Betrag  Quelle          Ziel       
-         * +    230     kontonummer     kontonummer
-         * -    100     kontonummer     kontonummer
-         */
         zaehler++;
+        Kontodetails();
     }
 
     //Methoden
+    public string GetKontonummer()
+    {
+        return kontonummer;
+    }
+
+    public string GetIBAN()
+    {
+        return iban;
+    }
+
+    public string GetKontoinhaber()
+    {
+        return kontoinhaber;
+    }
 
     //bool Einzahlen(decimal betrag, string pin)
-    public bool Einzahlen(decimal betrag, string pin, string quelle = "==========")
+    public bool Einzahlen(decimal betrag, string quelle = "==========")
     {
         if (betrag <= 0)
         {
             Console.WriteLine("Ungueltiger Betrag. Bitte nur Zahlen groesser 0 eingeben.");
             return false;
         }
-        if (this.pin == pin)
-        {
-            kontostand += betrag;
-            verlauf.Add($"+\t{betrag}\t{quelle}\t{kontonummer}");
-            return true;
-        }
-        else
-        {
-            Console.WriteLine("Ungueltiges pin.");
-            return false;
-        }
+
+        kontostand += betrag;
+        verlauf.Add($"+\t{betrag}\t{quelle}\t{kontonummer}");
+        return true;
+
     }
 
     //void Kontoauszug(string pin)
-    public void Kontoauszug(string pin)
+    public void Kontoauszug()
     {
-        if (this.pin == pin)
+        Console.WriteLine("==========KONTOAUSZUG==========");
+        foreach (string eintrag in verlauf)
         {
-            foreach (string eintrag in verlauf)
-            {
-                Console.WriteLine(eintrag);
-            }
-            KontostandAnzeigen(pin);
+            Console.WriteLine(eintrag);
         }
-        else
-        {
-            Console.WriteLine("Ungueltiges pin.");
-        }
+        KontostandAnzeigen();
+        Console.WriteLine("==========ENDEAUSZUG==========");
     }
 
 
     //bool Auszahlen(decimal betrag, string pin)
-    public bool Auszahlen(decimal betrag, string pin, string ziel = "==========")
+    public bool Auszahlen(decimal betrag, string ziel = "==========")
     {
         if (betrag <= 0)
         {
             Console.WriteLine("Ungueltiger Betrag. Bitte nur Zahlen groesser 0 eingeben.");
             return false;
         }
-        if (this.pin == pin)
+        if (kontostand < betrag)
         {
-            if (kontostand < betrag)
-            {
-                Console.WriteLine("Nicht abgedeckt.");
-                return false;
-            }
-            kontostand -= betrag;
-            verlauf.Add($"-\t{betrag}\t{kontonummer}\t{ziel}");
-            return true;
-        }
-        else
-        {
-            Console.WriteLine("Ungueltiges pin.");
+            Console.WriteLine("Nicht abgedeckt.");
             return false;
         }
+        kontostand -= betrag;
+        verlauf.Add($"-\t{betrag}\t{kontonummer}\t{ziel}");
+        return true;
     }
 
     //void KontostandAnzeigen(string pin)
-    public void KontostandAnzeigen(string pin)
+    public void KontostandAnzeigen()
     {
-        if (this.pin == pin)
-        {
-            Console.WriteLine($"Dein Aktueller Kontostand betraegt: {kontostand.ToString("F2")}" );
-        }
-        else
-        {
-            Console.WriteLine("Ungueltiges pin.");
-        }
+        Console.WriteLine($"Dein Aktueller Kontostand betraegt: {kontostand.ToString("F2")} EUR.");
     }
 
     //void Kontodetails() - kontonummer, iban, kontoinhaber, bank, pin
+    public void Kontodetails()
+    {
+        Console.WriteLine("=========== KONTODETAILS ===========");
+        Console.WriteLine($"Kontoinhaber : {kontoinhaber}");
+        Console.WriteLine($"Bank         : {bank}");
+        Console.WriteLine($"Filiale      : {filiale}");
+        Console.WriteLine($"Kontonummer  : {kontonummer}");
+        Console.WriteLine($"IBAN         : {iban}");
+        Console.WriteLine($"BIC          : {bic}");
+        Console.WriteLine($"PIN          : {this.pin}");
+        Console.WriteLine("===========================");
+
+    }
 
 
     private string BicErstellen()
@@ -195,22 +195,7 @@ internal class Bankkonto
         return IBAN;
     }
 
-    //void Kontodetails() - kontonummer, iban, kontoinhaber, bank, pin
-    public void kontodetails()
-    {
-      
-        
-            Console.WriteLine("=== Kontodetails ===");
-            Console.WriteLine($"Kontoinhaber: {kontoinhaber}");
-            Console.WriteLine($"Bank: {bank}");
-          
-            Console.WriteLine($"Kontonummer: {kontonummer}");
-            Console.WriteLine($"IBAN: {iban}");
-         
-            Console.WriteLine($"PIN: {pin}");
-        
-       
-    }
+
 
 
 }
