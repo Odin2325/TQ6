@@ -194,8 +194,74 @@ namespace ErsterProjekt
 
         private void KontoMenueOeffnen(Bankkonto eingelogtesKonto)
         {
-            //1. Einzahlen 2. Auszahlen 3. Kontostand 4. Kontoauszug 5. Ueberweisung 0. Beenden
+            string auswahl = "0";
+            decimal betrag = 0;
+            bool aktiv = true;
+
+            while (aktiv)
+            {
+                Console.WriteLine("Willkommen in ihrem Kundenmenü");
+                Console.WriteLine("\nWas wollen sie tun?");
+                Console.WriteLine("\n1.Einzahlen");
+                Console.WriteLine("\n2.Auszahlen");
+                Console.WriteLine("\n3.Kontostand");
+                Console.WriteLine("\n4.Kontoauszug");
+                Console.WriteLine("\n5.Überweisung");
+                Console.WriteLine("\n0.Beenden");
+
+                auswahl = Console.ReadLine();
+
+                switch (auswahl)
+                {
+                    case "1":
+                        Console.WriteLine("Bitte gebe den gewünschten Betrag ein");
+                        try
+                        {
+                            betrag = Convert.ToDecimal(Console.ReadLine());
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine(ex.Message);
+                        }
+                        eingelogtesKonto.Einzahlen(betrag);
+                        break;
+                    case "2":
+                        Console.WriteLine("Bitte gebe den gewünschten Betrag ein");
+                        try
+                        {
+                            betrag = Convert.ToDecimal(Console.ReadLine());
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine(ex.Message);
+                        }
+                        eingelogtesKonto.Auszahlen(betrag);
+                        break;
+                    case "3":
+                        eingelogtesKonto.KontostandAnzeigen();
+                        break;
+                    case "4":
+                        eingelogtesKonto.Kontoauszug();
+                        Console.ReadKey();
+                        break;
+                    case "5":
+                        Console.Write("Ziel-IBAN: ");
+                        string zielIBAN = Console.ReadLine();
+                        Console.Write("Betrag: ");
+                        betrag = Convert.ToDecimal(Console.ReadLine());
+                        UeberweisungDurchfuehren(eingelogtesKonto.GetIBAN(), zielIBAN, betrag);
+                        break;
+                    case "0":
+                        aktiv = false;
+                        Console.WriteLine("Logout erfolgreich");
+                        break;
+                    default:
+                        Console.WriteLine("Ungütlige Eingabe");
+                        break;
+                }
+            }
         }
+
 
         private Bankkonto? Einloggen()
         {
