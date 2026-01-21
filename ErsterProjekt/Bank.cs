@@ -177,6 +177,10 @@ namespace ErsterProjekt
                         Bankkonto? eingelogtesKonto = Einloggen();
                         if (eingelogtesKonto == null)
                             return;
+                        else
+                        {
+                            KontoMenueOeffnen(eingelogtesKonto);
+                        }
                         break;
                     case "0":
                         aktiv = false;
@@ -189,10 +193,15 @@ namespace ErsterProjekt
             }
         }
 
-        public Bankkonto? Einloggen()
+        private void KontoMenueOeffnen(Bankkonto eingelogtesKonto)
+        {
+            //1. Einzahlen 2. Auszahlen 3. Kontostand 4. Kontoauszug 5. Ueberweisung 0. Beenden
+        }
+
+        private Bankkonto? Einloggen()
         {
             Console.WriteLine("Sie moechten einloggen.");
-            Console.WriteLine("Geben Sie bitte Ihr Iban ein:");
+            Console.WriteLine("Geben Sie bitte Ihr Kontonummer ein:");
             string kontonummer = Console.ReadLine();
             Bankkonto meinKonto = KontoFindenDurchKontonummer(kontonummer);
             if (meinKonto != null)
