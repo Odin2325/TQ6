@@ -40,12 +40,13 @@ namespace ErsterProjekt
             this.filiale = filiale;
             kontostand = 0;
             pin = PinErstellen();
-            Console.WriteLine(pin);
+            
             bic = BicErstellen();
             kontonummer = KontonummerErstellen();
             zaehler++;
             iban = IBANErstellen();
             verlauf = new List<string>() { "OP\tBetrag\tQuelle\t\tZiel" };
+            Kontodetails();
             //Console.WriteLine($"Iban von {kontoinhaber} ist: " + iban);
             //Verlauf format:
             /* OP  Betrag Konto         Ziel
@@ -53,7 +54,11 @@ namespace ErsterProjekt
              * -    100   kontonummer   kontonummer
              */
         }
-
+        
+        public string GetPin()
+        {
+            return pin;
+        }
         public string GetKontonummer()
         {
             return kontonummer;
@@ -62,54 +67,47 @@ namespace ErsterProjekt
         {
             return iban; 
         }
+        public string GetKontoinhaber()
+        {
+            return kontoinhaber;
+        }
         //bool Einzahlen(decimal betrag, string pin)
-        public bool Einzahlen(decimal betrag, string pin)
+        public bool Einzahlen(decimal betrag, string quelle = "==========")
         {
             if (betrag <= 0)
             {
                 Console.WriteLine("Ungültiger Betrag. Bitte nur Zahlen größer als 0 eingeben");
                 return false;
             }
-            if(this.pin==pin)
-            {
-                kontostand += betrag;
-                verlauf.Add($"+\t{betrag}\t==========\t{iban}");
-                return true;
-            }
-            else
-            {
-                Console.WriteLine("Ungültiger Pin.");
-                return false;
-            }
+            kontostand += betrag;
+            verlauf.Add($"+\t{betrag}\t{quelle}\t\t{iban}");
+            return true;
         }
         //bool Auszahlen(decimal betrag, string pin)
-        public bool Auszahlen(decimal betrag, string pin)
+        public bool Auszahlen(decimal betrag, string ziel = "==========")
         {
             if (betrag <= 0)
             {
                 Console.WriteLine("Ungültiger Betrag. Bitte nur Zahlen größer als 0 eingeben");
                 return false;
             }
-            if (this.pin == pin)
+            
+            kontostand -= betrag;
+            if (kontostand < 0)
             {
-                kontostand -= betrag;
-                if (kontostand < 0)
-                {
-                    Console.WriteLine("Zu wenig geld zum abholen");
-                    kontostand += betrag;
-                    return false;
-                }
-                verlauf.Add($"-\t{betrag}\t==========\t{iban}");
-                return true;
-            }
-            else
-            {
-                Console.WriteLine("Ungültiger Pin.");
+                Console.WriteLine("Zu wenig geld zum abholen");
+                kontostand += betrag;
                 return false;
-            }
+             }
+             verlauf.Add($"-\t{betrag}\t{iban}\t\t{ziel}");
+             return true;
+       
+            
+                
+            
         }
         //void KontostandAnzeigen(string pin)
-        public void Kontostand(string pin)
+        public void Kontostand()
         {
             if (this.pin == pin)
             {
@@ -124,7 +122,7 @@ namespace ErsterProjekt
         }
 
         //void Kontoauszug(string pin)
-        public void Kontoauszug(string pin)
+        public void Kontoauszug()
         {
             if (this.pin == pin)
             {
@@ -152,17 +150,16 @@ namespace ErsterProjekt
             
             return;
         }
-                private string KontonummerErstellen()
-                {
-                    string kontonummer = "";
-                    int zaehlerLaenge = ("" + zaehler).Length;
+        private string KontonummerErstellen()
+        {
+            string kontonummer = "";
+            int zaehlerLaenge = ("" + zaehler).Length;
 
-                    for (int i = 0; i < 10; i++)
-                    {
-                        //341
-                        kontonummer += 0;
-                    }
-                    kontonummer += zaehler;
+            for (int i = 0; i < 10; i++)
+            {
+                kontonummer += 0;
+            }
+            kontonummer += zaehler;
 
 
                     return kontonummer;
@@ -217,6 +214,7 @@ namespace ErsterProjekt
             return IBAN;
                 
         }
+        
 
         //Methode
 

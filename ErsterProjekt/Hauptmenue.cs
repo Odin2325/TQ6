@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net.NetworkInformation;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 
@@ -46,9 +47,11 @@ namespace ErsterProjekt
                     Zahlen_Werkzeug.ZahlenWerk();
                     break;
                 case 5:
-                    Bankkonto HannesBankkonto = new Bankkonto("Hannes", "Parkbank", "Wegberg");
-                    HannesBankkonto.Kontodetails();
+                    //Bankkonto HannesBankkonto = new Bankkonto("Hannes", "Parkbank", "Wegberg");
+                    //HannesBankkonto.Kontodetails();
                     //Bankmenue();
+                    Bank Parkbank = new Bank("Parkbank", "HS4", "Wegberg", "Am Stadtpark");
+                    Parkbank.BankMenueOeffnen();
                     break;
 
                 default:
@@ -103,31 +106,5 @@ namespace ErsterProjekt
             }
 
         }
-        public static void Bankmenue()
-        {
-            int wahl;
-            Console.WriteLine("Waehle aus was du tun willst:");
-            Console.WriteLine("\n1.Einzahlen");
-            Console.WriteLine("\n2.Auszahlen");
-            Console.WriteLine("\n3.Kontoauszüge");
-            try
-            {
-                wahl = Convert.ToInt32(Console.ReadLine());
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Ungültige Eingabe:" + ex.Message);
-                return;
-            }
-            switch (wahl) 
-            {
-                case 1:
-                    Console.WriteLine("Bitte geben sie ihren Pin ein");
-                    string pin = Console.ReadLine();
-                    Bankkonto HannesBankkonto = new Bankkonto("Hannes", "Parkbank", "Wegberg");
-                    //HannesBankkonto.Einzahlen(pin);
-                    break;
-
-            }
     }
 }
