@@ -6,20 +6,7 @@ using System.Text;
 namespace ErsterProjekt
 {
 
-    internal class Bank
-    {
-        //Attribute
-        private List<Bankkonto> kontos;
-        /*
-         * liste von alle Bankkontos
-         * Bank name
-         * Filiale
-         * Ort
-         * Adresse
-         * 
-         */
-
-        //Konstruktor
+    
 
         internal class Bank
         {
