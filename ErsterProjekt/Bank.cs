@@ -176,7 +176,7 @@ namespace ErsterProjekt
                     case "3":
                         Bankkonto? eingelogtesKonto = Einloggen();
                         if (eingelogtesKonto == null)
-                            return;
+                            break;
                         else
                         {
                             KontoMenueOeffnen(eingelogtesKonto);
@@ -188,7 +188,6 @@ namespace ErsterProjekt
                     default:
                         Console.WriteLine("Ungueltige Eingabe. Versuchen Sie es bitte nochmal.");
                         break;
-
                 }
             }
         }
