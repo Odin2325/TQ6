@@ -1,11 +1,11 @@
-﻿using System.ComponentModel;
+﻿//using System.ComponentModel;
 
-namespace ErsterProjekt
-{
-    internal class BedingungUebungUndSchleifen
-    {
-        static void Main()
-        {
+//namespace ErsterProjekt
+//{
+//    internal class BedingungUebungUndSchleifen
+//    {
+//        static void Main()
+//        {
 
             //Random zufallszahlGenerator = new Random();
 
@@ -331,60 +331,60 @@ Bis zum naechsten mal!
 
             //Aufgabe mit Do-While-Schleife
 
-            Console.WriteLine("Willkommen in unserer kleinen Konsolen-Applikation, in der wir 2 Zahlen multiplizieren!");
+            //Console.WriteLine("Willkommen in unserer kleinen Konsolen-Applikation, in der wir 2 Zahlen multiplizieren!");
 
-            bool programm_laeuft = true;
+            //bool programm_laeuft = true;
 
-            do
-            {
+            //do
+            //{
 
-                Console.WriteLine("Wenn das Programm abgebrochen werden soll, bitte quit eingeben! Bitte nun die erste Zahl eingeben:");
+            //    Console.WriteLine("Wenn das Programm abgebrochen werden soll, bitte quit eingeben! Bitte nun die erste Zahl eingeben:");
 
-                string eingabe1 = Console.ReadLine();
+            //    string eingabe1 = Console.ReadLine();
 
-                if (!int.TryParse(eingabe1, out int zahl1))
+            //    if (!int.TryParse(eingabe1, out int zahl1))
 
-                {
+            //    {
 
-                    if (eingabe1.ToLower() == "quit")
-                    {
-                        Console.WriteLine("Bis zum nächsten Mal !");
-                        Console.WriteLine("Programm vorbei !");
+            //        if (eingabe1.ToLower() == "quit")
+            //        {
+            //            Console.WriteLine("Bis zum nächsten Mal !");
+            //            Console.WriteLine("Programm vorbei !");
 
-                        programm_laeuft = false;
-                    }
+            //            programm_laeuft = false;
+            //        }
 
-                    else
-                    {
-                        Console.WriteLine("Uppsala! Das ist keine Zahl und wir stoppen nur wenn Sie 'quit' eingeben!");
-                    }
+            //        else
+            //        {
+            //            Console.WriteLine("Uppsala! Das ist keine Zahl und wir stoppen nur wenn Sie 'quit' eingeben!");
+            //        }
 
-                    continue;
-                }
+            //        continue;
+            //    }
 
-                Console.WriteLine("Bitte nun die zweite Zahl eingeben:");
+            //    Console.WriteLine("Bitte nun die zweite Zahl eingeben:");
 
-                string eingabe2 = Console.ReadLine();
+            //    string eingabe2 = Console.ReadLine();
 
-                if (!int.TryParse(eingabe2, out int zahl2))
-                {
-                    if (eingabe2.ToLower() == "quit")
-                    {
-                        Console.WriteLine("Bis zum nächsten Mal!");
-                        Console.WriteLine("Programm vorbei!");
+            //    if (!int.TryParse(eingabe2, out int zahl2))
+            //    {
+            //        if (eingabe2.ToLower() == "quit")
+            //        {
+            //            Console.WriteLine("Bis zum nächsten Mal!");
+            //            Console.WriteLine("Programm vorbei!");
 
-                        programm_laeuft = false;
-                    }
-                    else
-                    {
-                        Console.WriteLine("Uppsala! Das ist keine gültige Zahl!");
-                    }
-                    continue;
-                }
+            //            programm_laeuft = false;
+            //        }
+            //        else
+            //        {
+            //            Console.WriteLine("Uppsala! Das ist keine gültige Zahl!");
+            //        }
+            //        continue;
+            //    }
 
-                int resultat = zahl1 * zahl2;
-                Console.WriteLine($"Das Ergebnis von {zahl1} x {zahl2} = {resultat}!");
-            } while (programm_laeuft);
+            //    int resultat = zahl1 * zahl2;
+            //    Console.WriteLine($"Das Ergebnis von {zahl1} x {zahl2} = {resultat}!");
+            //} while (programm_laeuft);
 
             //zusammenfassung des Programms: Ich setze eine bool-Variable programm_laeuft und gehe
             //in die Schlefe. hier überprüfe ich ob die eingegeben Werte Zahlen sind, wenn nein wird geprüft ob die Eingabe
@@ -396,8 +396,8 @@ Bis zum naechsten mal!
             //Bei der Ausgabe habe ich keinen Unterschied bemerkt,beides gleich, aber ich denke da die Schleife ja sowieso mind.
             //einmal ausgeführt wird, ist der Code mit einer Do-While Variante sauberer und übersichtlicher!
 
-        }
-    }
-}
+//        }
+//    }
+//}   
     
       

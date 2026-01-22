@@ -1,11 +1,11 @@
 ﻿
 
-namespace MicrosoftLearn
-{
-    internal class WhileDoWhileSchleifen
-    {
-        static void Main()
-        {
+//namespace MicrosoftLearn
+//{
+//    internal class WhileDoWhileSchleifen
+//    {
+//        static void Main()
+//        {
 
             //ÜBUNG while/for Schleifen
 
@@ -117,34 +117,34 @@ namespace MicrosoftLearn
             //Hero wins!  
 
            // Meine Lösung:
-            Random random = new Random();
+            //Random random = new Random();
 
-            int heroHealth = 10;
-            int monsterHealth = 10;
+            //int heroHealth = 10;
+            //int monsterHealth = 10;
 
-            while(heroHealth > 0 && monsterHealth > 0)
-            {
-                // Der Held greift an
-                int heroAttack = random.Next(1, 11);
-                monsterHealth -= heroAttack;
-                Console.WriteLine($"Das Monster wurde getroffen, verlor {heroAttack} Leben und hat noch {monsterHealth} Leben.");
+            //while(heroHealth > 0 && monsterHealth > 0)
+            //{
+            //    // Der Held greift an
+            //    int heroAttack = random.Next(1, 11);
+            //    monsterHealth -= heroAttack;
+            //    Console.WriteLine($"Das Monster wurde getroffen, verlor {heroAttack} Leben und hat noch {monsterHealth} Leben.");
 
-                // Prüfen, ob das Monster noch lebt
-                if (monsterHealth <= 0)
-                    break;
+            //    // Prüfen, ob das Monster noch lebt
+            //    if (monsterHealth <= 0)
+            //        break;
 
-                // Das Monster greift an
-                int monsterAttack = random.Next(1, 11);
-                heroHealth -= monsterAttack;
-                Console.WriteLine($"Der Held wurde getroffen, verlor {monsterAttack} Leben und hat noch {heroHealth} Leben.");
+            //    // Das Monster greift an
+            //    int monsterAttack = random.Next(1, 11);
+            //    heroHealth -= monsterAttack;
+            //    Console.WriteLine($"Der Held wurde getroffen, verlor {monsterAttack} Leben und hat noch {heroHealth} Leben.");
 
-            } 
+            //} 
 
-            // Der Sieger wird ausgeben
-            if (heroHealth > 0)
-                Console.WriteLine("Der Held hat gewonnen!");
-            else
-                Console.WriteLine("Das Monster hat gewonnen!");
+            //// Der Sieger wird ausgeben
+            //if (heroHealth > 0)
+            //    Console.WriteLine("Der Held hat gewonnen!");
+            //else
+            //    Console.WriteLine("Das Monster hat gewonnen!");
 
 
 
@@ -384,9 +384,9 @@ Your input value (7) has been accepted.             */
 
 
 
-        }
+//        }
 
 
 
-    }
-}
+//    }
+//}
