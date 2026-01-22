@@ -154,7 +154,7 @@ namespace ErsterProjekt
 
             while (aktiv)
             {
-                Console.WriteLine($"Wilkommen in die {bankName}. Was moechtest du heute tun?\n1. Konto Erstellen.\n2. Konto Loeschen\n3. Einloggen.\n0.Beenden");
+                Console.WriteLine($"Wilkommen in die {bankName}. Was moechtest du heute tun?\n1. Konto Erstellen.\n2. Konto Loeschen\n3. Einloggen.\n4. Bank Details ausgeben\n0.Beenden");
                 string eingabe = Console.ReadLine();
                 switch (eingabe)
                 {
@@ -178,6 +178,9 @@ namespace ErsterProjekt
                         {
                             KontoMenueOeffnen(eingelogtesKonto);
                         }
+                        break;
+                    case "4":
+                        BankDetailsAusgeben();
                         break;
                     case "0":
                         aktiv = false;

@@ -109,14 +109,7 @@ namespace ErsterProjekt
         //void KontostandAnzeigen(string pin)
         public void Kontostand()
         {
-            if (this.pin == pin)
-            {
-                Console.WriteLine("Dein Kontostand beträgt: " + kontostand + " EUR");
-            }
-            else
-            {
-                Console.WriteLine("Ungültige Eingabe");
-            }
+            Console.WriteLine($"Dein Aktueller Kontostand betraegt: {kontostand.ToString("F2")} EUR.");
             return;
 
         }
