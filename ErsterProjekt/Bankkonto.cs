@@ -35,6 +35,7 @@ internal class Bankkonto
         verlauf = new List<string>() { "OP\tBetrag\tQuelle\t\tZiel" };
         zaehler++;
         Kontodetails();
+
     }
 
     //Methoden
