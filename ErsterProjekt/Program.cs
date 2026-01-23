@@ -5,9 +5,19 @@
         static void Main()
         {
 
-            Bank meineBank = new Bank("Super Bank", "Muenchen1", "Muenchen", "Leopold Str.11");
-            meineBank.BankMenueOeffnen();
-            Console.WriteLine("Programm beendet. Danke für die Nutzung der Bank.");
+            // Objekt der Kindklasse Schueler erstellen
+            Schueler schueler = new Schueler("Anna", 16, "10B");
+
+            // Alle Informationen ausgeben
+             schueler.AlleInfosAusgeben();
+
+            // Damit das Konsolenfenster offen bleibt (optional)
+            //Console.ReadKey();
+
+
+            //Bank meineBank = new Bank("Super Bank", "Muenchen1", "Muenchen", "Leopold Str.11");
+            //meineBank.BankMenueOeffnen();
+            //Console.WriteLine("Programm beendet. Danke für die Nutzung der Bank.");
 
 
             //Bankkonto aufrufen
