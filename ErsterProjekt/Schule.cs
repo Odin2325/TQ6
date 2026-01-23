@@ -22,9 +22,10 @@ namespace ErsterProjekt
         }
 
         // Die Klasse soll eine Methode besitzen, die alle Informationen ausgibt
-        public void AlleInfosAusgeben()
+        public virtual void AlleInfosAusgeben()
         {
-            Console.WriteLine($"Name: {Name}\nAlter: {Alter}");
+            Console.WriteLine($"Name: {Name}");
+            Console.WriteLine($"Alter: {Alter}");
         }
     }
 
@@ -41,7 +42,7 @@ namespace ErsterProjekt
         }
 
         // Methode, um alle Infos auszugeben (inklusive Infos aus der Elternklasse)
-        public void AlleInfosAusgeben()
+        public override void AlleInfosAusgeben()
         {
             // Zuerst die Infos aus der Elternklasse ausgeben
             Console.WriteLine($"Name: {Name}");
