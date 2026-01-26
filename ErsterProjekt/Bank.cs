@@ -37,8 +37,34 @@ namespace ErsterProjekt
         //Methoden
         private void KontoErstellen(string kontoinhaber)
         {
-            kontos.Add(new Bankkonto(kontoinhaber));
-            Console.WriteLine("Dein Konto wurde erfolgreich erstellt!");
+            Console.WriteLine("Welchen Kontotyp moechten Sie?");
+            Console.WriteLine("1. Standardkonto");
+            Console.WriteLine("2. Kreditkonto");
+            Console.WriteLine("3. Investmentkonto");
+            Console.WriteLine("4. Tagesgeldkonto");
+
+            string auswahl = Console.ReadLine();
+
+            switch (auswahl)
+            {
+                case "1":
+                    kontos.Add(new Bankkonto(kontoinhaber));
+                    break;
+                case "2":
+                    kontos.Add(new Kreditkonto(kontoinhaber));
+                    break;
+                case "3":
+                    kontos.Add(new Investmentkonto(kontoinhaber));
+                    break;
+                case "4":
+                    kontos.Add(new Tagesgeldkonto(kontoinhaber));
+                    break;
+                default:
+                    Console.WriteLine("Ungueltige Auswahl.");
+                    return;
+            }
+
+            Console.WriteLine("Konto erfolgreich erstellt!");
         }
 
         private bool KontoLoeschen(string kontonummer)

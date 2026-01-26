@@ -19,6 +19,8 @@ namespace ErsterProjekt
             Console.WriteLine("\n3.Text Statistik");
             Console.WriteLine("\n4.Zahlen-Werkzeuge");
             Console.WriteLine("\n5.Bankkonto");
+            Console.WriteLine("\n6.Verkehr");
+            Console.WriteLine("\n7.Schule");
             Console.WriteLine("\nAuswahl:");
 
             int wahl;
@@ -52,6 +54,23 @@ namespace ErsterProjekt
                     //Bankmenue();
                     Bank Parkbank = new Bank("Parkbank", "HS4", "Wegberg", "Am Stadtpark");
                     Parkbank.BankMenueOeffnen();
+                    break;
+                case 6:
+                    Dictionary<int, List<int>> zeitplan = new Dictionary<int, List<int>>();
+                    zeitplan.Add(0, new List<int>() { 20, 40 });
+                    zeitplan.Add(7, new List<int>() { 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55 });
+                    zeitplan.Add(2, new List<int>() { 20, 40 });
+                    zeitplan.Add(13, new List<int>() { 20, 40 });
+
+                    Bus meinBus = new Bus(45, 0.95, 101, zeitplan);
+
+                    meinBus.Fahren();
+
+                    meinBus.Halten();
+                    break;
+                case 7:
+                    Schueler schueler = new Schueler("Anna", 16, "10B");
+                    schueler.InformationenAusgeben();
                     break;
 
                 default:

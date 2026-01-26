@@ -17,7 +17,7 @@ namespace ErsterProjekt
          * bic - string
          * pin - string
          */
-        private decimal kontostand;
+        protected decimal kontostand;
         //                          DE              89          37040           04405       3201300
         private string iban;//country code - check digit - bank id code - branche code - kontonummer
         private string kontonummer;
@@ -84,7 +84,7 @@ namespace ErsterProjekt
             return true;
         }
         //bool Auszahlen(decimal betrag, string pin)
-        public bool Auszahlen(decimal betrag, string ziel = "==========")
+        public virtual bool Auszahlen(decimal betrag, string ziel = "==========")
         {
             if (betrag <= 0)
             {
