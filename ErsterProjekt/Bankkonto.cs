@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ErsterProjekt
+﻿namespace ErsterProjekt
 {
 
     /*
@@ -33,7 +29,7 @@ namespace ErsterProjekt
         private static int zaehler = 0;
 
         //Konstruktor
-        public Bankkonto(string kontoinhaber, string bank="SuperBank", string filiale="Muenchen")
+        public Bankkonto(string kontoinhaber, string bank = "SuperBank", string filiale = "Muenchen")
         {
             this.kontoinhaber = kontoinhaber;
             this.bank = bank;
@@ -43,7 +39,7 @@ namespace ErsterProjekt
             bic = BicErstellen();
             kontonummer = KontonummerErstellen();
             iban = IBANErstellen();
-            verlauf = new List<string>() {"OP\tBetrag\tQuelle\t\tZiel"};
+            verlauf = new List<string>() { "OP\tBetrag\tQuelle\t\tZiel" };
             zaehler++;
             Kontodetails();
         }
@@ -73,9 +69,9 @@ namespace ErsterProjekt
         }
 
         //bool Einzahlen(decimal betrag, string pin)
-        public virtual bool Einzahlen(decimal betrag, string quelle="==========")
+        public virtual bool Einzahlen(decimal betrag, string quelle = "==========")
         {
-            if(betrag <= 0)
+            if (betrag <= 0)
             {
                 Console.WriteLine("Ungueltiger Betrag. Bitte nur Zahlen groesser 0 eingeben.");
                 return false;
@@ -91,17 +87,17 @@ namespace ErsterProjekt
         public void Kontoauszug()
         {
             Console.WriteLine("==========KONTOAUSZUG==========");
-                foreach (string eintrag in verlauf)
-                {
-                    Console.WriteLine(eintrag);
-                }
-                KontostandAnzeigen();
+            foreach (string eintrag in verlauf)
+            {
+                Console.WriteLine(eintrag);
+            }
+            KontostandAnzeigen();
             Console.WriteLine("==========ENDEAUSZUG==========");
         }
 
 
         //bool Auszahlen(decimal betrag, string pin)
-        public bool Auszahlen(decimal betrag, string ziel="==========")
+        public virtual bool Auszahlen(decimal betrag, string ziel = "==========")
         {
             if (betrag <= 0)
             {
@@ -121,7 +117,7 @@ namespace ErsterProjekt
         //void KontostandAnzeigen(string pin)
         public void KontostandAnzeigen()
         {
-                Console.WriteLine($"Dein Aktueller Kontostand betraegt: {kontostand.ToString("F2")} EUR.");
+            Console.WriteLine($"Dein Aktueller Kontostand betraegt: {kontostand.ToString("F2")} EUR.");
         }
 
         //void Kontodetails() - kontonummer, iban, kontoinhaber, bank, pin
@@ -172,9 +168,9 @@ namespace ErsterProjekt
         private string KontonummerErstellen()
         {
             string kontonummer = "";
-            int zaehlerLaenge = (""+zaehler).Length;
+            int zaehlerLaenge = ("" + zaehler).Length;
 
-            for(int i = 0; i < 10-zaehlerLaenge; i++)
+            for (int i = 0; i < 10 - zaehlerLaenge; i++)
             {
                 kontonummer += 0;
             }
@@ -188,7 +184,7 @@ namespace ErsterProjekt
             Random random = new Random();
             string neuerPin = "";
 
-            for(int i = 0; i< 4; i++)
+            for (int i = 0; i < 4; i++)
             {
                 neuerPin += random.Next(0, 10);
             }

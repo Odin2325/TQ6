@@ -75,9 +75,4 @@ namespace ErsterProjekt
         }
     }
 
-    internal class Zug : OeffentlichesNahverker
-    {
-
-    }
-
 }
