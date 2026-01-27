@@ -1,10 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Bankkonto.Buchungen
+﻿namespace Bankkonto
 {
-    internal class Buchungsart
+    public enum Buchungsart
     {
+        Einzahlung,
+        Auszahlung,
+        Ueberweisung,
+        Zinsen,
+        Gebuehr
     }
 }
