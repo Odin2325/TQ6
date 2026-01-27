@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
+﻿
 namespace ErsterProjekt
 {
     internal class Bank
@@ -44,7 +41,7 @@ namespace ErsterProjekt
             }
             else if (kontoArt.ToLower() == "kredit")
             {
-                kontos.Add(new Kreditkonto(kontoinhaber, 500, bankName, filiale));
+                kontos.Add(new Kreditkonto(kontoinhaber, bankName, filiale));
             }
             else
             {

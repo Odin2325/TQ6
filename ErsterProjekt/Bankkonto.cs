@@ -237,12 +237,10 @@
         // Konstruktor
         public Kreditkonto(
         string kontoinhaber,
-        decimal kreditrahmen = 500,
         string bank = "SuperBank",
         string filiale = "Muenchen")
         : base(kontoinhaber, bank, filiale)
         {
-            this.kreditrahmen = kreditrahmen;
         }
 
         //Methoden
@@ -255,7 +253,7 @@
                 return false;
             }
 
-            if (kontostand - betrag < -kreditrahmen)
+            if (kontostand - betrag < -500)
             {
                 Console.WriteLine("Kreditrahmen ueberschritten!");
                 return false;

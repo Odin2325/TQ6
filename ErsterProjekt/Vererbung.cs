@@ -59,7 +59,7 @@ namespace ErsterProjekt
 
     internal class Bus : OeffentlichesNahverker
     {
-        int linieNummer;
+        private int linieNummer;
         public Bus(int maxKapazitaet, double zuverlaessigkeit, int linieNummer, Dictionary<int, List<int>> zeitplan) : base(maxKapazitaet, zuverlaessigkeit, "B" +linieNummer, false, zeitplan, ArtBewegung.Strasse)
         {
             this.linieNummer = linieNummer;
