@@ -1,13 +1,27 @@
 ﻿
 using System.ComponentModel.Design;
+using System.Security.Cryptography.X509Certificates;
 
 
 
 
 internal class Bankkonto
+
 {
+    /*
+     * Wir brauchen zunaechst drei weitere Klassen! Kindklassen von Bankkonto.
+     * 1. Kreditkonto: Es soll moeglich sein, dass der kontostand negativ ist.
+     * 2. Investmentkonto: Wir duerfen hiervon nicht auszahlen bis der aktueller datum gleich 2060-01-01 ist.
+     *                      Zusaetzlich bekommen wir jeden Monat eine erhoehung vom kontostand um 1.25%.
+     * 3. Tagesgeldkonto: Eine Tagesgeldkonto darf maximal 500$ pro tag auszahlen, 
+     *                      und bekommt jeden monat eine erhoehung vom Kontostand um 0.7%.
+     */
+
+
+
+
     //Attribute
-    private decimal kontostand;
+    protected decimal kontostand;
     //                      DE              89              37040          04405        3201300
     private string iban;//country code - check digit - bank id code - branche code - kontonummer
     private string kontonummer;
@@ -18,7 +32,7 @@ internal class Bankkonto
     //Bank code - laendercode - standort stadt - filiale
     private string bic;
     private string pin;
-    private List<string> verlauf;
+    protected List<string> verlauf;
     private static int zaehler = 0;
 
     //Konstruktor
@@ -89,7 +103,7 @@ internal class Bankkonto
 
 
     //bool Auszahlen(decimal betrag, string pin)
-    public bool Auszahlen(decimal betrag, string ziel = "==========")
+    public virtual bool Auszahlen(decimal betrag, string ziel = "==========")
     {
         if (betrag <= 0)
         {
@@ -206,6 +220,123 @@ internal class Bankkonto
 
 
 }
+
+internal class Kreditkonto : Bankkonto
+{
+    //Konstrukto
+    public Kreditkonto(string kontoinhaber, string bank = "SuperBank", string filiale = "Muenchen") : base(kontoinhaber)
+    {
+    }
+
+    public override bool Auszahlen(decimal betrag, string ziel = "==========")
+    {
+        if (betrag <= 0)
+        {
+            Console.WriteLine("Ungueltiger Betrag. Bitte nur Zahlen groesser 0 eingeben.");
+            return false;
+
+
+        }
+        if (kontostand - betrag<-500) 
+        {
+            Console.WriteLine("Ungueltiger Betrag. konto nicht abgedeckt.");
+            return false;
+        }
+        kontostand -= betrag;
+        verlauf.Add($"-\t{betrag}\t{GetKontonummer()}\t{ziel}");
+        return true;
+    }
+
+
+
+
+
+
+}
+
+internal class Investmentkonto : Bankkonto
+{
+    public Investmentkonto(string kontoinhaber, string bank = "SuperBank", string filiale = "Muenchen") : base(kontoinhaber)
+    {
+    }
+    public override bool Auszahlen(decimal betrag, string ziel = "==========")
+    {// 1. Betrag prüfen
+        if (betrag <= 0)
+        {
+            Console.WriteLine("Ungueltiger Betrag. Bitte nur Zahlen groesser 0 eingeben.");
+            return false;
+
+
+        }
+        // 2. Datumssperre
+
+
+
+        DateTime freigabeDatum = new DateTime(2060, 1, 1);
+        if (DateTime.Now < freigabeDatum)
+        { 
+            Console.WriteLine("Auszahlung nicht erlaubt. Dieses Investmentkonto ist bis zum 01.01.2060 gesperrt.");
+            return false;
+        }
+
+        if (kontostand < betrag)
+        { 
+            Console.WriteLine("Nicht abgedeckt."); 
+            return false; 
+        }
+        
+
+        kontostand -= betrag;
+        verlauf.Add($"-\t{betrag}\t{GetKontonummer()}\t{ziel}"); 
+        return true;
+    }
+
+    public void ZinsenBerechnen()
+    {
+        decimal zinssatz = 0.0125m; // 1.25%
+        decimal zinsen = kontostand * zinssatz;
+
+        kontostand += zinsen;
+        verlauf.Add($"+\t{zinsen:F2}\tZinsen\t\t{GetKontonummer()}");
+
+        Console.WriteLine($"Zinsen gutgeschrieben: {zinsen:F2} EUR");
+    }
+
+
+}
+
+internal class Tagesgeldkonto : Bankkonto
+{
+    private decimal heuteAusgezahlt = 0;
+    private DateTime letzterTag = DateTime.Today;
+    public Tagesgeldkonto(string kontoinhaber, string bank = "SuperBank", string filiale = "Muenchen") : base(kontoinhaber, bank, filiale)
+    {
+    }
+    public override bool Auszahlen(decimal betrag, string ziel = "==========") 
+    {
+
+        if (DateTime.Today != letzterTag) 
+        { 
+            heuteAusgezahlt = 0; 
+            letzterTag = DateTime.Today;
+        }
+        if (heuteAusgezahlt + betrag > 500)
+        {
+            Console.WriteLine("Du darfst maximal 500 EUR pro Tag auszahlen.");
+            return false;
+        }
+        if (kontostand < betrag) 
+        {
+            Console.WriteLine("Nicht genug Geld auf dem Konto."); 
+            return false;
+        }
+        // Auszahlung durchführen
+        kontostand -= betrag; 
+        heuteAusgezahlt += betrag;
+        verlauf.Add($"-\t{betrag}\t{GetKontonummer()}\t{ziel}"); return true;
+    }
+}
+
 
 
 
