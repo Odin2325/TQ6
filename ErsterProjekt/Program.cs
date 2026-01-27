@@ -26,13 +26,16 @@
                         Schueler s1 = new Schueler("Saba", 43, "12A");
                         s1.Ausgabe();
             */
-            Kreditkonto kg = new Kreditkonto("Saba" );
-            kg.Einzahlen(200);
-            kg.Auszahlen(150);
-            kg.Auszahlen(1300);
-            kg.Kontoauszug();
-            
+            /*   Kreditkonto kg = new Kreditkonto("Saba" );
+               kg.Einzahlen(200);
+               kg.Auszahlen(150);
+               kg.Auszahlen(1300);
+               kg.Kontoauszug();
+               */
 
+
+            Bank deutscheBank = new Bank("Deutsche Bank", "Berlin Brandenburg", "Berlin", "Hauptstrasse 2");
+            deutscheBank.BankMenueOeffnen();
 
         }
     }
